@@ -156,6 +156,10 @@ node scripts/batch-research.js
 3. Fill out the checklist
 4. Save to `reports/[competitor-name]-[date].md`
 
+**💡 Tip: Token Efficiency**
+
+If you're on Claude Pro (vs Max or API), consider using scripts for batch research. Interactive research with Claude Code uses conversation tokens (~10-20k per competitor), while scripts run independently and use zero conversation tokens. For researching 1-2 competitors, interactive mode is great. For 5+ competitors, scripts are more efficient.
+
 ---
 
 ## 📊 Research Workflow
