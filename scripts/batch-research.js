@@ -4,30 +4,44 @@ const path = require('path');
 
 async function batchResearch() {
   console.log('🚀 Starting batch competitor research...\n');
-  
+
   // Load competitors from JSON
+  const competitorsPath = path.join(__dirname, '..', 'competitors.json');
+
+  if (!fs.existsSync(competitorsPath)) {
+    console.error('❌ competitors.json not found. Please create it from competitors.template.json');
+    process.exit(1);
+  }
+
   const competitorsData = JSON.parse(
-    fs.readFileSync(path.join(__dirname, '..', 'data', 'competitors.json'), 'utf8')
+    fs.readFileSync(competitorsPath, 'utf8')
   );
-  
+
+  // Flatten all competitor tiers into a single array
+  const allCompetitors = [
+    ...(competitorsData.competitors.tier_1_must_research || []),
+    ...(competitorsData.competitors.tier_2_should_research || []),
+    ...(competitorsData.competitors.tier_3_nice_to_have || [])
+  ];
+
   const researcher = new CompetitorResearcher();
   const results = [];
-  
+
   try {
     await researcher.initialize();
-    
-    for (const competitor of competitorsData.competitors) {
-      if (competitor.researched) {
+
+    for (const competitor of allCompetitors) {
+      if (competitor.status === 'completed') {
         console.log(`⏭️  Skipping ${competitor.name} (already researched)`);
         continue;
       }
       
       console.log(`\n${'='.repeat(50)}`);
       console.log(`🔍 Researching: ${competitor.name}`);
-      console.log(`🌐 Website: ${competitor.website}`);
+      console.log(`🌐 Website: ${competitor.url}`);
       console.log(`${'='.repeat(50)}`);
-      
-      const researchData = await researcher.researchCompetitor(competitor.name, competitor.website);
+
+      const researchData = await researcher.researchCompetitor(competitor.name, competitor.url);
       const reportPath = await researcher.generateReport(researchData);
       
       results.push({
@@ -39,16 +53,16 @@ async function batchResearch() {
       });
       
       // Update competitor status
-      competitor.researched = true;
-      competitor.researchDate = new Date().toISOString();
-      competitor.screenshotsCount = researchData.screenshots.length;
-      
+      competitor.status = 'completed';
+      competitor.researched_date = new Date().toISOString().split('T')[0];
+      competitor.screenshots_count = researchData.screenshots.length;
+
       console.log(`✅ Completed: ${competitor.name}`);
     }
-    
+
     // Save updated competitors data
     fs.writeFileSync(
-      path.join(__dirname, '..', 'data', 'competitors.json'),
+      competitorsPath,
       JSON.stringify(competitorsData, null, 2)
     );
     

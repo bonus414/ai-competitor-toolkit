@@ -1,0 +1,29 @@
+{
+  "name": "ai-competitor-toolkit",
+  "version": "1.0.0",
+  "description": "Automated competitor research toolkit using AI-powered browser automation",
+  "main": "index.js",
+  "scripts": {
+    "test": "node scripts/test-playwright.js",
+    "research": "node scripts/research-competitor.js",
+    "batch": "node scripts/batch-research.js",
+    "install-browsers": "npx playwright install"
+  },
+  "keywords": [
+    "competitor-research",
+    "market-research",
+    "playwright",
+    "automation",
+    "ai",
+    "claude-code"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.40.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

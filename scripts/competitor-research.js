@@ -338,21 +338,51 @@ ${researchData.error ? `\n## Errors\n${researchData.error}` : ''}
   }
 }
 
-// Main execution
+// Example usage (if called directly)
 async function main() {
   const researcher = new CompetitorResearcher();
-  
+
   try {
     await researcher.initialize();
-    
-    // Research Leftshift One
-    const researchData = await researcher.researchCompetitor('Leftshift One', 'https://leftshiftone.com/en/');
-    
+
+    // Load competitors from JSON
+    const fs = require('fs');
+    const competitorsPath = path.join(__dirname, '..', 'competitors.json');
+
+    if (!fs.existsSync(competitorsPath)) {
+      console.error('❌ competitors.json not found. Please create it from competitors.template.json');
+      process.exit(1);
+    }
+
+    const competitorsData = JSON.parse(fs.readFileSync(competitorsPath, 'utf8'));
+
+    // Flatten all competitor tiers into a single array
+    const allCompetitors = [
+      ...(competitorsData.competitors.tier_1_must_research || []),
+      ...(competitorsData.competitors.tier_2_should_research || []),
+      ...(competitorsData.competitors.tier_3_nice_to_have || [])
+    ];
+
+    // Find first pending competitor
+    const pendingCompetitor = allCompetitors.find(c => c.status === 'pending');
+
+    if (!pendingCompetitor) {
+      console.log('✅ All competitors have been researched!');
+      process.exit(0);
+    }
+
+    console.log(`\nResearching first pending competitor: ${pendingCompetitor.name}`);
+
+    // Research the competitor
+    const researchData = await researcher.researchCompetitor(pendingCompetitor.name, pendingCompetitor.url);
+
     // Generate report
     await researcher.generateReport(researchData);
-    
+
     console.log('\n🎉 Competitor research completed successfully!');
-    
+    console.log(`💡 Tip: Use research-competitor.js to research specific competitors`);
+    console.log(`💡 Tip: Use batch-research.js to research all pending competitors`);
+
   } catch (error) {
     console.error('❌ Fatal error:', error);
   } finally {
