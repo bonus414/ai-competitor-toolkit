@@ -1,15 +1,14 @@
 # ==============================================
 # USER-SPECIFIC FILES (created from templates)
 # ==============================================
-# Uncomment these lines if you want to keep your
-# competitive research private and not commit it:
+# Keep your competitive research private and local:
 
-# competitors.json
-# PROJECT-CONTEXT.md
-# our-products/
-# reports/
-# screenshots/
-# data/
+competitors.json
+PROJECT-CONTEXT.md
+our-products/
+reports/
+screenshots/
+data/
 
 # ==============================================
 # GENERAL IGNORES
