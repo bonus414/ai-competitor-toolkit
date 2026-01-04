@@ -205,24 +205,12 @@ Scripts are in `scripts/` directory:
 - **PROJECT-CONTEXT.template.md** - Example project briefing structure
 - **our-products.template/** - Product documentation templates
 
-## 🤝 Contributing
-
-This is an open-source template! Contributions welcome:
-- Share improvements to the research template
-- Add new automation scripts
-- Improve documentation
-- Share examples of great competitive research
-
-## 📄 License
-
-[Add your license here]
 
 ## ⭐ Acknowledgments
 
 Built with:
 - [Claude Code](https://github.com/anthropics/claude-code) - AI-powered development
 - [Playwright MCP](https://github.com/microsoft/playwright-mcp) - Browser automation
-- Love for systematic competitive intelligence ❤️
 
 ---
 
