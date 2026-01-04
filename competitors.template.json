@@ -1,0 +1,79 @@
+{
+  "_comment": "📝 TEMPLATE FILE: Copy this to competitors.json and customize with your competitors",
+  "_instructions": {
+    "product_focus": "Replace with your product name or category",
+    "research_scope": "Describe the market/category you're researching",
+    "tiers": "Organize competitors by priority (tier 1 = must research, tier 2 = should research, tier 3 = nice to have)",
+    "status": "Use 'pending' or 'completed' to track research progress",
+    "researched_date": "Update with YYYY-MM-DD when research is completed"
+  },
+
+  "product_focus": "{YOUR_PRODUCT_NAME}",
+  "research_scope": "{YOUR_MARKET_CATEGORY - e.g., 'AI document analysis', 'Project management software', 'CRM tools'}",
+
+  "competitors": {
+    "tier_1_must_research": [
+      {
+        "name": "Example Competitor A",
+        "url": "https://www.example-a.com/",
+        "status": "pending",
+        "researched_date": null,
+        "notes": "Market leader, direct competitor"
+      },
+      {
+        "name": "Example Competitor B",
+        "url": "https://www.example-b.com/",
+        "status": "completed",
+        "researched_date": "2025-01-15",
+        "notes": "Enterprise-focused, premium pricing"
+      }
+    ],
+
+    "tier_2_should_research": [
+      {
+        "name": "Example Competitor C",
+        "url": "https://www.example-c.com/",
+        "status": "pending",
+        "researched_date": null,
+        "notes": "Similar features, different target market"
+      },
+      {
+        "name": "Example Competitor D",
+        "url": "https://www.example-d.com/",
+        "status": "pending",
+        "researched_date": null,
+        "notes": "Growing fast, strong in specific vertical"
+      }
+    ],
+
+    "tier_3_nice_to_have": [
+      {
+        "name": "Example Competitor E",
+        "url": "https://www.example-e.com/",
+        "status": "pending",
+        "researched_date": null,
+        "notes": "Niche player, specific use case"
+      },
+      {
+        "name": "Example Competitor F",
+        "url": "https://www.example-f.com/",
+        "status": "pending",
+        "researched_date": null,
+        "notes": "Open source alternative"
+      }
+    ]
+  },
+
+  "metadata": {
+    "last_updated": "2025-01-04",
+    "our_product": "{YOUR_PRODUCT_NAME from YOUR_COMPANY}",
+    "product_status": "{BETA/LAUNCHED/IN_DEVELOPMENT}",
+    "research_priority": "{HIGH/MEDIUM/LOW - explain why}",
+    "total_competitors": 6,
+    "completed": 1,
+    "pending": 5,
+    "excluded_from_research": [
+      "{Category or competitors you're intentionally NOT researching - explain why}"
+    ]
+  }
+}

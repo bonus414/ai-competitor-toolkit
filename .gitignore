@@ -1,0 +1,46 @@
+# ==============================================
+# USER-SPECIFIC FILES (created from templates)
+# ==============================================
+# Uncomment these lines if you want to keep your
+# competitive research private and not commit it:
+
+# competitors.json
+# PROJECT-CONTEXT.md
+# our-products/
+# reports/
+# screenshots/
+# data/
+
+# ==============================================
+# GENERAL IGNORES
+# ==============================================
+
+# Screenshots (large files)
+# Uncomment if you don't want to track screenshots:
+# screenshots/
+
+# Node modules (if you add any scripts)
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary files
+*.tmp
+.temp/
